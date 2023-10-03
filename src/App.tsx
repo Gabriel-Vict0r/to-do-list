@@ -1,12 +1,12 @@
-import { useState } from "react";
 //components
 import Header from "./components/Header";
+import { useState } from "react";
 import Footer from "./components/Footer";
-import GlobalStyle from "./styles/global";
+import GlobalStyle, { Main } from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { light } from "./styles/themes/light";
 import { dark } from "./styles/themes/dark";
-import { usePersistedState } from "./utils/usePersistState";
+import usePersistedState from "./utils/usePersistState";
 import { DefaultTheme } from "styled-components";
 function App() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
@@ -20,7 +20,7 @@ function App() {
       <div className="App">
         <GlobalStyle />
         <Header togleTheme={togleTheme} />
-        <h1>Content</h1>
+        <Main />
         <Footer />
       </div>
     </ThemeProvider>

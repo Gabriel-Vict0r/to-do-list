@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { DefaultTheme } from "styled-components";
-import { Container } from "./styles";
+import { Container, Tittle } from "./styles";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
 import { shade } from "polished";
@@ -10,13 +10,16 @@ interface Props {
 }
 const Header = ({ togleTheme }: Props) => {
   const { colors, title } = useContext<DefaultTheme>(ThemeContext);
-
+  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    setChecked(title === "light" ? false : true);
+  }, [title]);
   return (
     <Container>
-      <h1>React + TS To-do</h1>
+      <Tittle>To Do List</Tittle>
       <Switch
         onChange={togleTheme}
-        checked={title === 'dark'}
+        checked={checked}
         checkedIcon={false}
         uncheckedIcon={false}
         height={10}

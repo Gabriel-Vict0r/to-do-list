@@ -9,5 +9,9 @@ export const light: DefaultTheme = {
 
         background: "#f9fbf2",
         text: '#333'
+    },
+    fonts: {
+        sizePrimary: '2.5em',
+        sizeSecondary: '16px'
     }
 }
