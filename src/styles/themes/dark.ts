@@ -1,5 +1,5 @@
 import { DefaultTheme } from "styled-components";
-
+import calc from "../../utils/calcFontSize";
 export const dark: DefaultTheme = {
     title: 'dark',
     colors: {
@@ -8,10 +8,19 @@ export const dark: DefaultTheme = {
         tirdy: '#1e1e24',
 
         background: "#333",
-        text: '#f9fbf2'
+        text: '#f9fbf2',
+        primarygray: 'black',
+        forms: {
+            primarygray: '#414040',
+            secondGray: '#EFEFEF',
+            tirdyGray: '',
+            backround: '#FFFFFF',
+        }
     },
     fonts: {
-        sizePrimary: '1.5em',
-        sizeSecondary: '16px'
+        primary: 'Nunito',
+        secondary: 'PT sans',
+        sizePrimary: calc(32),
+        sizeSecondary: calc(16)
     }
 }

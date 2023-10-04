@@ -6,5 +6,10 @@ export const Container = styled.footer`
   justify-content: center;
 `;
 export const HighLight = styled.span`
-    color: ${prop => prop.theme.colors.tirdy};
-`
+  color: ${(prop) => prop.theme.colors.tirdy};
+`;
+export const Text = styled.p`
+  font-family: ${(prop) => prop.theme.fonts.primary};
+  font-size: ${(prop) => prop.theme.fonts.sizeSecondary};
+  font-weight: 700;
+`;

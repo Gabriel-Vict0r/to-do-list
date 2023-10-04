@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, HighLight } from "./styles";
+import { Container, HighLight, Text } from "./styles";
 
 const Footer = () => {
   return (
     <Container>
-      <p>
-        <HighLight>To do list </HighLight>@2021
-      </p>
+      <Text>
+        <HighLight>To do list </HighLight>@2023
+      </Text>
     </Container>
   );
 };

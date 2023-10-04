@@ -16,7 +16,7 @@ const Header = ({ togleTheme }: Props) => {
   }, [title]);
   return (
     <Container>
-      <Tittle>To Do List</Tittle>
+      <Tittle>TaskDo</Tittle>
       <Switch
         onChange={togleTheme}
         checked={checked}

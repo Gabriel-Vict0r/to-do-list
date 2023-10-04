@@ -9,8 +9,17 @@ declare module 'styled-components' {
 
             background: string;
             text: string;
+            primarygray: string;
+            forms: {
+                primarygray: string;
+                secondGray: string;
+                tirdyGray: string;
+                backround: string;
+            };
         }
         fonts: {
+            primary: string;
+            secondary: string;
             sizePrimary: string;
             sizeSecondary: string;
         }
