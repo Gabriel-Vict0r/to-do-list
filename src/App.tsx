@@ -10,15 +10,19 @@ import usePersistedState from "./utils/usePersistState";
 import { DefaultTheme } from "styled-components";
 import TaskForm from "./components/Form";
 import TaskList from "./components/TaskList";
+
+//interface
+import { ITask } from "./interfaces/Task";
 function App() {
+
+  const [taskList, setTaskList] = useState<ITask[]>([])
   /** ATIVAR ESSE HOOOCK SÓ QUANDO FINALIZAR */
   // const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const [theme, setTheme] = useState(light);
   const togleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
-  console.log(theme.title);
-  console.log(theme.colors.forms.primarygray);
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,7 +31,7 @@ function App() {
         <Header togleTheme={togleTheme} />
         <Main>
           <Subtitle>O que você vai fazer?</Subtitle>
-          <TaskForm btnText="Criar Tarefa" />
+          <TaskForm btnText="Criar Tarefa" taskList={taskList} setTaskList={setTaskList}/>
           <div>
             <Subtitle>Suas tarefas</Subtitle>
             <TaskList />
