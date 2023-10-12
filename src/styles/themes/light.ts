@@ -22,6 +22,6 @@ export const light: DefaultTheme = {
         primary: 'Nunito',
         secondary: 'PT sans',
         sizePrimary: calc(32),
-        sizeSecondary: calc(16)
+        sizeSecondary: calc(20)
     }
 }

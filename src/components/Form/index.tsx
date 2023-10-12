@@ -20,7 +20,7 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
 
     setTaskList!([...taskList, newTask]);
 
-    console.log(taskList);
+    console.log(taskList, newTask);
     setTitle("");
     setDifficulty(0);
   };
@@ -46,8 +46,8 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
       <ContainerInput>
         <Label htmlFor="difficulty">Dificuldade </Label>
         <Input
-          type="text"
-          name="title"
+          type="number"
+          name="difficulty"
           placeholder="Dificuldade da tarefa"
           onChange={handleChange}
           value={difficulty}

@@ -9,3 +9,17 @@ export const mixinsHF = css`
   justify-content: space-between;
   padding: 0 30px;
 `;
+export const mixinsContainers = css`
+  margin: 0.5em auto;
+  display: flex;
+  max-width: 400px;
+  gap: 0.8em;
+  background-color: ${(prop) => prop.theme.colors.forms.backround};
+  padding: 2em;
+  border-radius: 5px;
+`
+export const mixinsTitles = css`
+  font-family: ${(prop) => prop.theme.fonts.primary};
+  font-weight: 700;
+  font-size: ${(prop) => prop.theme.fonts.sizeSecondary};
+`

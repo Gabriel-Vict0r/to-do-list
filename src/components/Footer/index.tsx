@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <Container>
       <Text>
-        <HighLight>To do list </HighLight>@2023
+        <HighLight>TASKDO @2023</HighLight>
       </Text>
     </Container>
   );

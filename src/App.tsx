@@ -13,9 +13,10 @@ import TaskList from "./components/TaskList";
 
 //interface
 import { ITask } from "./interfaces/Task";
+import Modal from "./components/Modal";
 function App() {
-
-  const [taskList, setTaskList] = useState<ITask[]>([])
+  const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
   /** ATIVAR ESSE HOOOCK SÓ QUANDO FINALIZAR */
   // const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const [theme, setTheme] = useState(light);
@@ -23,18 +24,34 @@ function App() {
     setTheme(theme.title === "light" ? dark : light);
   };
 
-
+  const deleteTask = (id: number) => {
+    setTaskList(taskList.filter((task) => task.id !== id));
+  };
+  const handleEdit = (task: ITask): void => {
+    setTaskToUpdate(task);
+  };
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <GlobalStyle />
+        <Modal
+          children={<TaskForm btnText="Editar Tarefa" taskList={taskList} />}
+        />
         <Header togleTheme={togleTheme} />
         <Main>
           <Subtitle>O que você vai fazer?</Subtitle>
-          <TaskForm btnText="Criar Tarefa" taskList={taskList} setTaskList={setTaskList}/>
+          <TaskForm
+            btnText="Criar Tarefa"
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
           <div>
             <Subtitle>Suas tarefas</Subtitle>
-            <TaskList />
+            <TaskList
+              taskList={taskList}
+              handleDelete={deleteTask}
+              handleEdit={handleEdit}
+            />
           </div>
         </Main>
         <Footer />

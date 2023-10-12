@@ -1,15 +1,10 @@
 import styled from "styled-components";
 import calc from "../../utils/calcFontSize";
+import { mixinsContainers, mixinsTitles } from "../../utils/mixins";
 
 export const Form = styled.form`
-  margin: 0.5em auto;
-  display: flex;
   flex-direction: column;
-  max-width: 400px;
-  gap: 0.8em;
-  background-color: ${(prop) => prop.theme.colors.forms.backround};
-  padding: 2em;
-  border-radius: 5px;
+  ${mixinsContainers};
 `;
 export const ContainerInput = styled.div`
   display: flex;
@@ -18,9 +13,7 @@ export const ContainerInput = styled.div`
   gap: 0.8em;
 `;
 export const Label = styled.label`
-  font-family: ${(prop) => prop.theme.fonts.primary};
-  font-weight: 700;
-  font-size: ${(prop) => prop.theme.fonts.sizeSecondary};
+  ${mixinsTitles};
 `;
 export const Input = styled.input`
   width: 100%;
