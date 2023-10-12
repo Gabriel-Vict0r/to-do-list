@@ -21,6 +21,5 @@ export const Subtitle = styled.h2`
     font-size: ${prop => prop.theme.fonts.sizePrimary};
     margin: 0 auto;
     letter-spacing: 1px;
-    
-    
+    color: ${prop => prop.theme.colors.text};
 `

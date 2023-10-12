@@ -5,7 +5,7 @@ export const ContainerTask = styled.div`
   flex-direction: row;
   ${mixinsContainers};
   /* padding-bottom: 0; */
-  box-shadow: 4px 7px 23px -11px rgba(201, 201, 201, 1);
+  box-shadow: ${(prop) => prop.theme.colors.boxShadow};
 `;
 export const Content = styled.div`
   display: flex;
@@ -39,3 +39,7 @@ export const Actions = styled(Content)`
 export const Title = styled.h4`
   ${mixinsTitles};
 `;
+
+export const WithoutTask = styled.p`
+  color: ${prop => prop.theme.colors.text};
+`

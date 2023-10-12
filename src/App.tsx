@@ -10,16 +10,16 @@ import usePersistedState from "./utils/usePersistState";
 import { DefaultTheme } from "styled-components";
 import TaskForm from "./components/Form";
 import TaskList from "./components/TaskList";
-
 //interface
 import { ITask } from "./interfaces/Task";
 import Modal from "./components/Modal";
+import { AuthProvider } from "./context/editContext";
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
   const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
   /** ATIVAR ESSE HOOOCK SÓ QUANDO FINALIZAR */
-  // const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
+  // const [theme, setTheme] = useState(dark);
   const togleTheme = () => {
     setTheme(theme.title === "light" ? dark : light);
   };
@@ -30,30 +30,48 @@ function App() {
   const handleEdit = (task: ITask): void => {
     setTaskToUpdate(task);
   };
+  const updateTask = (id: number, title: string, difficulty: number) => {
+    const updatedTask: ITask = { id, title, difficulty };
+
+    const updatedItems = taskList.map((task) => {
+      return task.id === updatedTask.id ? updatedTask : task;
+    });
+
+    setTaskList(updatedItems);
+  };
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <GlobalStyle />
-        <Modal
-          children={<TaskForm btnText="Editar Tarefa" taskList={taskList} />}
-        />
-        <Header togleTheme={togleTheme} />
-        <Main>
-          <Subtitle>O que você vai fazer?</Subtitle>
-          <TaskForm
-            btnText="Criar Tarefa"
-            taskList={taskList}
-            setTaskList={setTaskList}
+        <AuthProvider>
+          <Modal
+            children={
+              <TaskForm
+                btnText="Editar Tarefa"
+                taskList={taskList}
+                task={taskToUpdate}
+                handleUpdate={updateTask}
+              />
+            }
           />
-          <div>
-            <Subtitle>Suas tarefas</Subtitle>
-            <TaskList
+          <Header togleTheme={togleTheme} />
+          <Main>
+            <Subtitle>O que você vai fazer?</Subtitle>
+            <TaskForm
+              btnText="Criar Tarefa"
               taskList={taskList}
-              handleDelete={deleteTask}
-              handleEdit={handleEdit}
+              setTaskList={setTaskList}
             />
-          </div>
-        </Main>
+            <div>
+              <Subtitle>Suas tarefas</Subtitle>
+              <TaskList
+                taskList={taskList}
+                handleDelete={deleteTask}
+                handleEdit={handleEdit}
+              />
+            </div>
+          </Main>
+        </AuthProvider>
         <Footer />
       </div>
     </ThemeProvider>

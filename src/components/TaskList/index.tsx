@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 //interfaces
 import { ITask } from "../../interfaces/Task";
-import { Actions, ContainerTask, Content, Title } from "./styles";
+import { Actions, ContainerTask, Content, Title, WithoutTask } from "./styles";
 import { HiMiniPencilSquare } from "react-icons/hi2";
-import { AiFillDelete } from "react-icons/ai";
 import { LuTrash2 } from "react-icons/lu";
+import { EditContext } from "../../context/editContext";
 interface Props {
   taskList: ITask[];
   handleDelete(id: number): void;
@@ -12,6 +12,11 @@ interface Props {
 }
 
 const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
+  const {setShowModal } = useContext(EditContext);
+  const changeEdit = (task: ITask) => {
+    setShowModal(true);
+    handleEdit(task);
+  };
   return (
     <>
       {taskList.length > 0 ? (
@@ -22,7 +27,7 @@ const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
               <p>Dificuldade: {task.difficulty}</p>
             </Content>
             <Actions>
-              <HiMiniPencilSquare onClick={() => handleEdit(task)} />
+              <HiMiniPencilSquare onClick={() => changeEdit(task)} />
               <LuTrash2
                 onClick={() => {
                   handleDelete(task.id);
@@ -32,7 +37,7 @@ const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
           </ContainerTask>
         ))
       ) : (
-        <p>Não há tarefas cadastradas</p>
+        <WithoutTask>Não há tarefas cadastradas</WithoutTask>
       )}
     </>
   );

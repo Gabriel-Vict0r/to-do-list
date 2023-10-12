@@ -10,6 +10,7 @@ export const light: DefaultTheme = {
         background: "#f9fbf2",
         text: '#333',
         primarygray: 'black',
+        boxShadow: '4px 7px 23px -11px rgba(201, 201, 201, 1)',
         forms: {
             primarygray: '#414040',
             secondGray: '#EFEFEF',

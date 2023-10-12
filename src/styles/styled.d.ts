@@ -10,6 +10,7 @@ declare module 'styled-components' {
             background: string;
             text: string;
             primarygray: string;
+            boxShadow: string;
             forms: {
                 primarygray: string;
                 secondGray: string;

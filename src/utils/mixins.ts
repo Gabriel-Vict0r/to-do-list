@@ -22,4 +22,5 @@ export const mixinsTitles = css`
   font-family: ${(prop) => prop.theme.fonts.primary};
   font-weight: 700;
   font-size: ${(prop) => prop.theme.fonts.sizeSecondary};
+  color: ${prop => prop.theme.colors.text};
 `

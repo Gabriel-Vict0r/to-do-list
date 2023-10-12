@@ -27,6 +27,7 @@ export const Input = styled.input`
   &:focus {
     border: 1px solid ${(prop) => prop.theme.colors.forms.tirdyGray};
   }
+  color: ${(prop) => prop.theme.colors.text};
 `;
 export const Submit = styled.input`
   border: 1px solid ${(prop) => prop.theme.colors.secondary};
@@ -35,6 +36,7 @@ export const Submit = styled.input`
   background-color: transparent;
   transition: all 0.3s ease-in-out;
   margin-top: 10px;
+  color: ${(prop) => prop.theme.colors.text};
   &:hover {
     background-color: ${(prop) => prop.theme.colors.secondary};
     color: ${(prop) => prop.theme.colors.background};

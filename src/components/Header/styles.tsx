@@ -7,4 +7,5 @@ export const Tittle = styled.h1`
   font-family: "Nunito", sans-serif;
   font-weight: 700;
   font-size: 2.5rem;
+  margin: 0 auto;
 `;
