@@ -18,10 +18,13 @@ function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
   const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
   /** ATIVAR ESSE HOOOCK SÓ QUANDO FINALIZAR */
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
+  const [theme, setTheme] = usePersistedState<DefaultTheme | null>(
+    "theme",
+    light
+  );
   // const [theme, setTheme] = useState(dark);
   const togleTheme = () => {
-    setTheme(theme.title === "light" ? dark : light);
+    setTheme(theme!.title === "light" ? dark : light);
   };
 
   const deleteTask = (id: number) => {
@@ -40,7 +43,7 @@ function App() {
     setTaskList(updatedItems);
   };
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme!}>
       <div className="App">
         <GlobalStyle />
         <AuthProvider>
