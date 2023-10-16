@@ -9,7 +9,7 @@ interface Props {
   togleTheme(): void;
 }
 const Header = ({ togleTheme }: Props) => {
-  const { colors, title } = useContext<DefaultTheme>(ThemeContext);
+  const { colors, title } = useContext(ThemeContext);
   const [checked, setChecked] = useState(false);
   useEffect(() => {
     setChecked(title === "light" ? false : true);
